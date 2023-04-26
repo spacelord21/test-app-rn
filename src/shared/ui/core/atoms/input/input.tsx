@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { styled } from "../../../theme";
-import { TextInput } from "react-native";
+import { PasswordEye } from "@features/password-eye";
 
 const Container = styled.View`
   width: 90%;
@@ -20,7 +21,7 @@ const CustomInput = styled.TextInput.attrs(({ theme }) => ({
   font-size: ${({ theme }) => theme.typography.subtitle.size};
   letter-spacing: ${({ theme }) => theme.typography.subtitle.letterSpacing};
   font-family: ${({ theme }) => theme.typography.subtitle.fontFamily};
-  width: 90%;
+  width: 70%;
 `;
 
 interface TInputProps {
@@ -28,10 +29,21 @@ interface TInputProps {
   onChange: (value: string) => void;
   value: string;
   placeholder?: string;
+  isPassword?: boolean;
 }
 
-export const Input = ({ type, onChange, value, placeholder }: TInputProps) => {
-  const isForPassword = type === "password";
+export const Input = ({
+  type,
+  onChange,
+  value,
+  placeholder,
+  isPassword,
+}: TInputProps) => {
+  const [inputType, setInputType] = useState<"password" | "text">(
+    type ?? "text"
+  );
+
+  const isForPassword = inputType === "password";
   return (
     <Container>
       <CustomInput
@@ -40,7 +52,9 @@ export const Input = ({ type, onChange, value, placeholder }: TInputProps) => {
         value={value}
         placeholder={placeholder}
       />
-      {isForPassword ? null : null}
+      {isPassword && value ? (
+        <PasswordEye type={inputType} setType={setInputType} />
+      ) : null}
     </Container>
   );
 };

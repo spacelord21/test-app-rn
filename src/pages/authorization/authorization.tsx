@@ -29,6 +29,7 @@ export const Authorization = () => {
         placeholder="Пароль"
         key="password"
         type="password"
+        isPassword={true}
       />
       <PrimaryButton onPress={authHandler} children={"Авторизоваться"} />
     </Container>
