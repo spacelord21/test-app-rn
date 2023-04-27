@@ -30,6 +30,7 @@ interface TInputProps {
   value: string;
   placeholder?: string;
   isPassword?: boolean;
+  setFocus: (value: boolean) => void;
 }
 
 export const Input = ({
@@ -38,6 +39,7 @@ export const Input = ({
   value,
   placeholder,
   isPassword,
+  setFocus,
 }: TInputProps) => {
   const [inputType, setInputType] = useState<"password" | "text">(
     type ?? "text"
@@ -51,6 +53,8 @@ export const Input = ({
         onChangeText={onChange}
         value={value}
         placeholder={placeholder}
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
       />
       {isPassword && value ? (
         <PasswordEye type={inputType} setType={setInputType} />
