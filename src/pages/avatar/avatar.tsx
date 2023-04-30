@@ -8,7 +8,7 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.palette.background.primary};
   justify-content: center;
   align-items: center;
-  object-fit: contain;
+  /* object-fit: contain; */
 `;
 
 const Flex = styled.View`
