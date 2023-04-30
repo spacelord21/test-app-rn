@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TMainStackParamList } from "../types";
 import { Authorization } from "@pages/authorization";
 import { MapLocation } from "@pages/map-location";
+import { Avatar } from "@pages/avatar";
 
 const Stack = createNativeStackNavigator<TMainStackParamList>();
 const defaultOptions = {
@@ -10,7 +11,7 @@ const defaultOptions = {
 
 export const MainStackNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName="screenWithMap">
+    <Stack.Navigator initialRouteName="avatarChoose">
       <Stack.Screen
         name="authScreen"
         component={Authorization}
@@ -19,6 +20,11 @@ export const MainStackNavigation = () => {
       <Stack.Screen
         name="screenWithMap"
         component={MapLocation}
+        options={{ ...defaultOptions }}
+      />
+      <Stack.Screen
+        name="avatarChoose"
+        component={Avatar}
         options={{ ...defaultOptions }}
       />
     </Stack.Navigator>
