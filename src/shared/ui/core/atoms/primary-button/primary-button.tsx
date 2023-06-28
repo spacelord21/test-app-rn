@@ -1,6 +1,7 @@
 import { styled } from "../../../theme";
 import { ReactNode, isValidElement } from "react";
 import { Typography } from "../typography";
+import { StyleProp, ViewStyle } from "react-native";
 
 const Button = styled.TouchableOpacity`
   justify-content: center;
