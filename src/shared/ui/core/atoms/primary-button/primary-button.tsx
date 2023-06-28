@@ -1,7 +1,6 @@
+import { ReactNode } from "react";
 import { styled } from "../../../theme";
-import { ReactNode, isValidElement } from "react";
 import { Typography } from "../typography";
-import { StyleProp, ViewStyle } from "react-native";
 
 const Button = styled.TouchableOpacity`
   justify-content: center;
@@ -11,21 +10,28 @@ const Button = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.palette.text.primary};
   margin-top: ${({ theme }) => theme.spacing(2)}px;
   border-radius: 5px;
+  ${({ disabled }) =>
+    disabled &&
+    `
+    opacity: 0.7;
+  `}
 `;
 
 const ButtonContent = styled(Typography)`
   color: ${({ theme }) => theme.palette.text.secondary};
+  text-align: center;
 `;
 
 type TButtonProps = {
+  children: ReactNode | string;
   onPress: () => void;
-  children: string | ReactNode;
+  disabled?: boolean;
 };
 
-export const PrimaryButton = ({ onPress, children }: TButtonProps) => {
+export const PrimaryButton = ({ children, ...rest }: TButtonProps) => {
   return (
-    <Button activeOpacity={0.7} onPress={onPress}>
-      {!isValidElement(children) ? (
+    <Button activeOpacity={0.7} {...rest}>
+      {typeof children === "string" ? (
         <ButtonContent variant="subtitle">{children}</ButtonContent>
       ) : (
         children

@@ -5,6 +5,7 @@ import { AppThemeProvider } from "@shared/ui";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
+import { RootStackNavigation } from "./navigation/root-stack-navigation";
 
 const customFonts = {
   ROBOTO_LIGHT: require("../../assets/fonts/Roboto-Light.ttf"),
@@ -45,7 +46,7 @@ export default function App() {
     <SafeAreaView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <AppThemeProvider>
         <NavigationContainer>
-          <MainStackNavigation />
+          <RootStackNavigation />
         </NavigationContainer>
       </AppThemeProvider>
     </SafeAreaView>
