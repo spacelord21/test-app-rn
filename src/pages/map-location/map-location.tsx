@@ -2,6 +2,9 @@ import MapView, { Circle } from "react-native-maps";
 import { useCurrentLocation } from "./hooks";
 import { PrimaryButton, styled } from "@shared/ui";
 import { useTheme } from "styled-components";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { TMainStackParamList } from "@app/navigation/types";
 
 const Flex = styled.View`
   flex: 0.8;
@@ -24,9 +27,15 @@ const Map = styled(MapView)`
 const radius = 500;
 const circleWidth = 1.5;
 
+type Navigation = NativeStackNavigationProp<
+  TMainStackParamList,
+  "screenWithMap"
+>;
+
 export const MapLocation = () => {
   const { position } = useCurrentLocation();
   const theme = useTheme();
+  const navigation = useNavigation<Navigation>();
 
   return (
     <Container>
@@ -42,7 +51,13 @@ export const MapLocation = () => {
         />
       </Map>
       <Flex />
-      <PrimaryButton onPress={() => {}}>Далее</PrimaryButton>
+      <PrimaryButton
+        onPress={() => {
+          navigation.navigate("avatarChoose");
+        }}
+      >
+        Далее
+      </PrimaryButton>
     </Container>
   );
 };

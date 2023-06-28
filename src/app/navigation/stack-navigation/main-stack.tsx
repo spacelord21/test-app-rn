@@ -11,7 +11,7 @@ const defaultOptions = {
 
 export const MainStackNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName="avatarChoose">
+    <Stack.Navigator initialRouteName="authScreen">
       <Stack.Screen
         name="authScreen"
         component={Authorization}

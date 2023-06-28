@@ -36,8 +36,6 @@ export const useCamera = () => {
   const takePicture = async () => {
     if (!camera) return;
     const { uri } = await camera.takePictureAsync();
-    console.log("here");
-
     setPreviewVisible(true);
     setPhoto(uri);
   };

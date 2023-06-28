@@ -8,17 +8,23 @@ import { ImagePreview } from "../image-preview";
 import { useCameraContext } from "@pages/avatar/context";
 
 const CameraView = styled(ExpoCamera)`
-  flex: 1;
+  flex: 0.8;
+  height: 90%;
+  border: 1px solid red;
   width: 100%;
+  position: absolute;
+  z-index: 500;
+  top: ${({ theme }) => theme.spacing(-5)}px;
 `;
 
 const Container = styled.View`
   flex: 1;
   width: 100%;
-  height: 100%;
+  height: 80%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const TakePictureButton = styled.TouchableOpacity`
@@ -31,11 +37,13 @@ const TakePictureButton = styled.TouchableOpacity`
 
 const ButtonsContainer = styled.View`
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing(2)}px;
+  bottom: ${({ theme }) => theme.spacing(0)}px;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
   width: 100%;
+  height: 120px;
+  background-color: ${({ theme }) => theme.palette.accent["color-primary-900"]};
 `;
 
 const FlipButton = styled.TouchableOpacity``;

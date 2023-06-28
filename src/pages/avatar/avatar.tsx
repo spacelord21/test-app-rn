@@ -1,6 +1,6 @@
-import { styled } from "@shared/ui";
-import { AvatarCircle, Camera } from "./ui";
-import { CameraContextProvider } from "./context";
+import { PrimaryButton, styled } from "@shared/ui";
+import { AvatarCircle, AvatarPreview, Camera } from "./ui";
+import { CameraContextProvider, useCameraContext } from "./context";
 import { useCamera } from "./hooks";
 
 const Container = styled.View`
@@ -10,22 +10,16 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const Flex = styled.View`
-  flex: 0.6;
-`;
-
 export const Avatar = () => {
   const { startCamera, isCameraStarted, setStartCamera } = useCamera();
+
   return (
     <CameraContextProvider>
       <Container>
         {isCameraStarted ? (
           <Camera setStartCamera={setStartCamera} />
         ) : (
-          <>
-            <AvatarCircle startCamera={startCamera} />
-            <Flex />
-          </>
+          <AvatarPreview startCamera={startCamera} />
         )}
       </Container>
     </CameraContextProvider>

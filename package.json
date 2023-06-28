@@ -10,6 +10,7 @@
   "dependencies": {
     "@iconify/react": "^4.1.0",
     "@react-navigation/core": "^6.4.8",
+    "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.15",

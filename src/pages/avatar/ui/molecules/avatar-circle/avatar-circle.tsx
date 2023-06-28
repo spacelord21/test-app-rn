@@ -1,4 +1,4 @@
-import { useCamera } from "@pages/avatar/hooks";
+import { useTheme } from "styled-components";
 import { useCameraContext } from "../../../context";
 import { Typography, styled } from "@shared/ui";
 
@@ -24,8 +24,19 @@ type TAvatarCircleProps = {
 
 export const AvatarCircle = ({ startCamera }: TAvatarCircleProps) => {
   const { photo } = useCameraContext();
+  const theme = useTheme();
   return (
-    <Circle activeOpacity={0.9} onPress={startCamera}>
+    <Circle
+      activeOpacity={0.9}
+      onPress={startCamera}
+      style={{
+        shadowColor: theme.palette.accent["color-primary-600"],
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.7,
+        shadowRadius: 3,
+        elevation: 70,
+      }}
+    >
       {photo ? (
         <Image source={{ uri: photo }} />
       ) : (
