@@ -4,6 +4,8 @@ import { Camera as ExpoCamera, FlashMode } from "expo-camera";
 import { useTheme } from "styled-components";
 import { FlashModeChoose } from "../../atoms";
 import { useState } from "react";
+import { ImagePreview } from "../image-preview";
+import { useCameraContext } from "@pages/avatar/context";
 
 const CameraView = styled(ExpoCamera)`
   flex: 1;
@@ -38,20 +40,55 @@ const ButtonsContainer = styled.View`
 
 const FlipButton = styled.TouchableOpacity``;
 
-export const Camera = () => {
+type TCameraProps = {
+  setStartCamera: (value: boolean) => void;
+};
+
+export const Camera = ({ setStartCamera }: TCameraProps) => {
   const theme = useTheme();
-  const { toggleCameraType, type } = useCamera();
+  const {
+    toggleCameraType,
+    type,
+    takePicture,
+    previewVisible,
+    setPreviewVisible,
+    startCamera,
+  } = useCamera();
+  const { photo, setPhoto, setCamera } = useCameraContext();
   const [flashType, setFlashType] = useState<FlashMode>(FlashMode.off);
+
   return (
     <Container>
-      <CameraView type={type} ratio="16:9" />
-      <ButtonsContainer>
-        <FlipButton onPress={toggleCameraType}>
-          <Flip color={theme.palette.background.secondary} />
-        </FlipButton>
-        <TakePictureButton />
-        <FlashModeChoose type={flashType} setType={setFlashType} />
-      </ButtonsContainer>
+      {photo && previewVisible ? (
+        <ImagePreview
+          photo={photo}
+          onRetakePhoto={() => {
+            setPreviewVisible(false);
+            setPhoto("");
+            startCamera();
+          }}
+          onContinuePress={() => {
+            setPreviewVisible(false);
+            setStartCamera(false);
+          }}
+        />
+      ) : (
+        <>
+          <CameraView
+            type={type}
+            ratio="16:9"
+            ref={(r) => setCamera(r!)}
+            flashMode={flashType}
+          />
+          <ButtonsContainer>
+            <FlipButton onPress={toggleCameraType}>
+              <Flip color={theme.palette.background.secondary} />
+            </FlipButton>
+            <TakePictureButton onPress={takePicture} />
+            <FlashModeChoose type={flashType} setType={setFlashType} />
+          </ButtonsContainer>
+        </>
+      )}
     </Container>
   );
 };

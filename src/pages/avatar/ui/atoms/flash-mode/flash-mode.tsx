@@ -52,8 +52,6 @@ export const FlashModeChoose = ({ setType, type }: TFlashModeChooseProps) => {
         setOpen={setOpen}
         value={type}
         setValue={setType}
-        closeAfterSelecting={false}
-        closeOnBackPressed={true}
       />
     </PickerContainer>
   );

@@ -1,3 +1,5 @@
+import { useCamera } from "@pages/avatar/hooks";
+import { useCameraContext } from "../../../context";
 import { Typography, styled } from "@shared/ui";
 
 const Circle = styled.TouchableOpacity`
@@ -10,18 +12,22 @@ const Circle = styled.TouchableOpacity`
   object-fit: contain;
 `;
 
-const Image = styled.Image``;
+const Image = styled.Image`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+`;
 
 type TAvatarCircleProps = {
-  image?: string;
-  onPress: () => void;
+  startCamera: () => void;
 };
 
-export const AvatarCircle = ({ image, onPress }: TAvatarCircleProps) => {
+export const AvatarCircle = ({ startCamera }: TAvatarCircleProps) => {
+  const { photo } = useCameraContext();
   return (
-    <Circle activeOpacity={0.9} onPress={onPress}>
-      {image ? (
-        <Image source={{ uri: image }} />
+    <Circle activeOpacity={0.9} onPress={startCamera}>
+      {photo ? (
+        <Image source={{ uri: photo }} />
       ) : (
         <Typography>Добавьте аватар</Typography>
       )}

@@ -1,6 +1,6 @@
-import { Typography, styled } from "@shared/ui";
-
+import { styled } from "@shared/ui";
 import { AvatarCircle, Camera } from "./ui";
+import { CameraContextProvider } from "./context";
 import { useCamera } from "./hooks";
 
 const Container = styled.View`
@@ -8,7 +8,6 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.palette.background.primary};
   justify-content: center;
   align-items: center;
-  /* object-fit: contain; */
 `;
 
 const Flex = styled.View`
@@ -16,18 +15,19 @@ const Flex = styled.View`
 `;
 
 export const Avatar = () => {
-  const { isCameraStarted, startCamera } = useCamera();
-
+  const { startCamera, isCameraStarted, setStartCamera } = useCamera();
   return (
-    <Container>
-      {isCameraStarted ? (
-        <Camera />
-      ) : (
-        <>
-          <AvatarCircle onPress={startCamera} />
-          <Flex />
-        </>
-      )}
-    </Container>
+    <CameraContextProvider>
+      <Container>
+        {isCameraStarted ? (
+          <Camera setStartCamera={setStartCamera} />
+        ) : (
+          <>
+            <AvatarCircle startCamera={startCamera} />
+            <Flex />
+          </>
+        )}
+      </Container>
+    </CameraContextProvider>
   );
 };
