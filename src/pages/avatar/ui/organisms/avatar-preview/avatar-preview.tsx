@@ -2,8 +2,8 @@ import { PrimaryButton, Typography, styled } from "@shared/ui";
 import { AvatarCircle } from "../../molecules";
 import { useCameraContext } from "@pages/avatar/context";
 import { useNavigation } from "@react-navigation/core";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TAppStackParamList } from "@app/navigation/types";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 const Container = styled.View`
   flex: 1;
@@ -21,7 +21,7 @@ type TAvatarPreviewProps = {
   startCamera: () => void;
 };
 
-type Navigation = NativeStackNavigationProp<TAppStackParamList, "authStack">;
+type Navigation = DrawerNavigationProp<TAppStackParamList, "authStack">;
 
 export const AvatarPreview = ({ startCamera }: TAvatarPreviewProps) => {
   const { photo } = useCameraContext();

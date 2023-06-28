@@ -3,8 +3,8 @@ import { useCurrentLocation } from "./hooks";
 import { PrimaryButton, styled } from "@shared/ui";
 import { useTheme } from "styled-components";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TMainStackParamList } from "@app/navigation/types";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 const Flex = styled.View`
   flex: 0.8;
@@ -27,10 +27,7 @@ const Map = styled(MapView)`
 const radius = 500;
 const circleWidth = 1.5;
 
-type Navigation = NativeStackNavigationProp<
-  TMainStackParamList,
-  "screenWithMap"
->;
+type Navigation = DrawerNavigationProp<TMainStackParamList, "screenWithMap">;
 
 export const MapLocation = () => {
   const { position } = useCurrentLocation();
