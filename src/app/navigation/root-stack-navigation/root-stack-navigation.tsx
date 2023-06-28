@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TAppStackParamList } from "../types";
-import { MainStackNavigation } from "../stack-navigation";
 import { AppStackNavigation } from "../app-stack-navigation";
+import { AuthDrawerNavigation } from "../auth-drawer-navigation";
 
 const Stack = createNativeStackNavigator<TAppStackParamList>();
 const defaultOptions = {
@@ -12,7 +12,7 @@ export const RootStackNavigation = () => {
     <Stack.Navigator initialRouteName="authStack">
       <Stack.Screen
         name="authStack"
-        component={MainStackNavigation}
+        component={AuthDrawerNavigation}
         options={{ ...defaultOptions }}
       />
       <Stack.Screen

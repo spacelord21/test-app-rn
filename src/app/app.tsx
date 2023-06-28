@@ -1,11 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { MainStackNavigation } from "./navigation";
+import { SafeAreaView, Text } from "react-native";
 import { AppThemeProvider } from "@shared/ui";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
-import { RootStackNavigation } from "./navigation/root-stack-navigation";
+import { RootStackNavigation } from "./navigation";
 
 const customFonts = {
   ROBOTO_LIGHT: require("../../assets/fonts/Roboto-Light.ttf"),

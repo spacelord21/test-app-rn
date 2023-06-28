@@ -3,11 +3,11 @@ import { useAuth } from "./hooks";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TMainStackParamList } from "@app/navigation/types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
-type Navigation = NativeStackNavigationProp<TMainStackParamList, "authScreen">;
+type Navigation = DrawerNavigationProp<TMainStackParamList, "authScreen">;
 
 const Container = styled.View`
   flex: 1;
