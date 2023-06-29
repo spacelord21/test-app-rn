@@ -16,8 +16,6 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const Title = styled(Typography)``;
-
 export const Authorization = () => {
   const { authHandler, password, setPassword, setUsername, username } =
     useAuth();

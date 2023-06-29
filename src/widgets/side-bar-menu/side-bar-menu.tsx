@@ -1,7 +1,6 @@
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
-  DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { Logo, styled } from "@shared/ui";
@@ -20,21 +19,6 @@ const LogoWrapper = styled.View`
 type Props = DrawerContentComponentProps & {};
 
 export const SideBarMenu = ({ ...props }: Props) => {
-  const { state, navigation } = props;
-  const routeName = (item: string) => {
-    switch (item) {
-      case "authScreen":
-        return "Авторизация";
-      case "screenWithMap":
-        return "Геолокация";
-      case "avatarChoose":
-        return "Выбор аватара";
-      default:
-        return "";
-    }
-  };
-  console.log(state);
-
   return (
     <Container>
       <LogoWrapper>

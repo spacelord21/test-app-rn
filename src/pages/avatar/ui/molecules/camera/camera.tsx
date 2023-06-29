@@ -44,6 +44,7 @@ const ButtonsContainer = styled.View`
   width: 100%;
   height: 120px;
   background-color: ${({ theme }) => theme.palette.accent["color-primary-900"]};
+  z-index: 500;
 `;
 
 const FlipButton = styled.TouchableOpacity``;
