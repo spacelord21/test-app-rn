@@ -1,6 +1,6 @@
-import { PrimaryButton, styled } from "@shared/ui";
-import { AvatarCircle, AvatarPreview, Camera } from "./ui";
-import { CameraContextProvider, useCameraContext } from "./context";
+import { styled } from "@shared/ui";
+import { AvatarPreview, Camera } from "./ui";
+import { CameraContextProvider } from "./context";
 import { useCamera } from "./hooks";
 
 const Container = styled.View`

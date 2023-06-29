@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Region } from "react-native-maps";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
-import * as Permissions from "expo-permissions";
 
 const initialPosition: Region = {
   latitude: 62,

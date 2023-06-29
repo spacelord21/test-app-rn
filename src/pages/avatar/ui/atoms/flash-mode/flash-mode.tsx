@@ -21,11 +21,9 @@ const flashModes: ItemType<FlashMode>[] = [
 const Picker = styled(DropDownPicker)`
   background-color: transparent;
   border: none;
-  /* width: 70px; */
 `;
 
 const PickerContainer = styled.View`
-  /* flex: 1; */
   width: 25px;
 `;
 
@@ -45,7 +43,6 @@ export const FlashModeChoose = ({ setType, type }: TFlashModeChooseProps) => {
           width: 35,
           borderColor: "transparent",
         }}
-        showTickIcon={false}
         dropDownDirection={"AUTO"}
         items={flashModes}
         open={open}
